@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class SourceSelection extends Component {
   constructor(props) {
@@ -15,9 +14,10 @@ class SourceSelection extends Component {
   }
 
   componentWillMount() {
-    axios.get('https://newsapi.org/v1/sources?language=en')
-      .then(response => {
-        this.setState({ sources: response.data.sources });
+    fetch('https://newsapi.org/v1/sources?language=en')
+      .then(response => response.json())
+      .then(json => {
+        this.setState({ sources: json.sources });
       });
   }
 

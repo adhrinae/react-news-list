@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NewsArticle from './NewsArticle';
-import axios from 'axios';
 
 class NewsList extends Component {
   constructor(props) {
@@ -12,10 +11,11 @@ class NewsList extends Component {
 
   componentWillReceiveProps(nextProps) {
     let request_url = `https://newsapi.org/v1/articles?source=${nextProps.source}&apiKey=${process.env.REACT_APP_NEWSAPI_KEY}`;
-    
-    axios.get(request_url)
-      .then(response => {
-        this.setState({ articles: response.data.articles });
+
+    fetch(request_url)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({ articles: json.articles });
       });
   }
 
