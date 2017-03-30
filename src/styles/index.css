@@ -1,0 +1,16 @@
+#root {
+  padding-top: 1.5rem;
+}
+
+.icon.is-large {
+  margin-right: 1rem;
+}
+
+.news-list {
+  margin-top: 1.5rem;
+}
+
+.media-left > .image {
+  width: 128px;
+  padding: 10px;
+}
